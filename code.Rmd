@@ -1,0 +1,60 @@
+---
+title: "Risk Characteristics of Real Estate Investments_Naifeng Zhang"
+author: "NAIFENG ZHANG"
+date: "22/12/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+1.
+mean = 0.0226
+var=0.00046
+sharpe ratio:NPI-Rf
+
+2.no discernible trend, no seasonal fluctuations, not constant variance, outliers around 2008
+3. same
+
+2. 
+AR(1): ar1coef=0.7775, intercept=0.023
+AR(1,4) ar1=.7669, ar4=.3843 intercept=.014
+MA(1): ma1coef=0.4958, intercept=0.0227
+
+sd of unsmoothed data= 0.0667
+
+3 factors.
+for NPI smoothed data.
+intercept: -0.030464
+Rm-Rf: 0.1909
+SMB: 0.0611
+HML: 0.2369
+
+
+
+
+Code
+
+unsmoothing:
+
+AR(1) :arima(npi,order=c(1,0,0))
+AR(1,4): arima(npits,order=c(4,0,0))
+MA(1) :arima(npits,order=c(0,0,1))
+
+
+for (i in 5:150){
+
+unsmoothed[i]= (j[i]-.7669*j[i-1]-.3483*j[i-4])/ (2*(.88867)/7.98)}
+
+
+
+factors:
+
+lm(unsmoothed - Rf ~ f1+f2+f3)
+
+PIMCO factors
+
+
+
+
